@@ -32,7 +32,7 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex items-center justify-center sm:items-stretch sm:justify-start">
+              
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="h-8 w-auto"
@@ -41,7 +41,7 @@ export default function Navbar() {
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-6">
+                  <div className="flex space-x-6 items-center justify-center">
                     {navigation.map((item) => (
                       <Link
                         key={item.name}
@@ -57,7 +57,7 @@ export default function Navbar() {
                     ))}
                   </div>
                 </div>
-              </div>
+              
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
