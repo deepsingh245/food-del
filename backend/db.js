@@ -8,7 +8,7 @@ const mongoDB = () => {
     .connect(MongoURI)
     .then(() => {
       console.log("Connected to MongoDB");
-      const fetched_data = mongoose.connection.db.collection("foodCategory");
+      const fetched_data = mongoose.connection.db.collection("foodItems");
 
       fetched_data.find({}).toArray(function (err, data) {
         if (!err) {

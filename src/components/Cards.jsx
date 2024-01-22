@@ -15,9 +15,9 @@ function Cards() {
         <div className='dropdown flex items-center justify-between'>
           <div className='dropdown1 mx-1'>
           
-{/* <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label> */}
-<select id="countries" class="bg-cyan-700 text-gray-100 text-sm font-semibold rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2.5 hover:bg-cyan-900 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-  <option selected>Item</option>
+{/* <label for="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label> */}
+<select id="countries" className="bg-cyan-700 text-gray-100 text-sm font-semibold rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2.5 hover:bg-cyan-900 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+  <option defaultValue>Item</option>
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
@@ -26,8 +26,8 @@ function Cards() {
 
           </div>
     <div className='dropdown2 mx-1'>
-    <select id="countries" class="bg-cyan-700 text-gray-100 text-sm font-semibold rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2.5 hover:bg-cyan-900 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-  <option selected>Size</option>
+    <select id="countries" className="bg-cyan-700 text-gray-100 text-sm font-semibold rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2.5 hover:bg-cyan-900 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+  <option defaultValue>Size</option>
   <option  value="1">Small</option>
   <option  value="2">Regular</option>
   <option  value="3">Large</option>
