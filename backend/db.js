@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const MongoURI =
-  "mongodb+srv://TapEat:tapeat123@cluster0.pnmy3lu.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://TapEat:tapeat123@cluster0.pnmy3lu.mongodb.net/tapEat?retryWrites=true&w=majority";
 
 const mongoDB = () => {
-  mongoose
+ try{ mongoose
     .connect(MongoURI)
     .then(() => {
       console.log("Connected to MongoDB");
@@ -19,9 +19,9 @@ const mongoDB = () => {
           console.error(err);
         }
       });
-    })
-    .catch((err) => {
+    })}
+    catch(err){
       console.error(err);
-    });
+    };
 };
 module.exports = mongoDB;

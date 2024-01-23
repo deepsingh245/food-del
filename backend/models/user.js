@@ -1,23 +1,27 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:[true,'Please provide your name']
-        },
-        location:{
-            type:String,
-            required:true
-        },
-        email:{
-            type:String,
-            required:true
-        },
-        date:{
-            type:Date,
-            default: Date.now()  //this will automatically set the current time when a user is
-        }
-    }
-);
+  fisrtname: {
+    type: String,
+    required: [true, "Please provide your name"],
+  },
+  lastname: {
+    type: String,
+    required: [true, "Please provide your name"],
+  },
+  location: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now(),
+  },
+});
 
-module.exports = mongoose.model('user2', UserSchema)
+const newUser = mongoose.model("users2", UserSchema);
+module.exports = newUser;
