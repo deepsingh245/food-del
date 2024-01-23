@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
-  fisrtname: {
+  name: {
     type: String,
     required: [true, "Please provide your name"],
   },
-  lastname: {
-    type: String,
-    required: [true, "Please provide your name"],
-  },
+//   lastname: {
+//     type: String,
+//     required: [true, "Please provide your name"],
+//   },
   location: {
     type: String,
     required: true,
@@ -23,5 +23,5 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-const newUser = mongoose.model("users2", UserSchema);
+const newUser = mongoose.model("users", UserSchema);
 module.exports = newUser;

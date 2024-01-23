@@ -5,8 +5,8 @@ const router = express.Router()
 
 router.post('/createuser',[
     body('email').isEmail(),
-    body('firstname').isLength({min:1}),
-    body('lastname').isLength({min:1}),
+    body('name','error').isLength({min:1}),
+    // body('lastname').isLength({min:1}),
     body('password','incorrect password').isLength({min: 5})
 ],
 
@@ -18,8 +18,8 @@ if (!errors.isEmpty()){
 
   try{
         let newUser = new user({
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
+           name: req.body.name,
+            // lastname: req.body.lastname,
             email: req.body.email,
             password: req.body.password,
             location:req.body.location
