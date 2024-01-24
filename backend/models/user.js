@@ -5,13 +5,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide your name"],
   },
-//   lastname: {
-//     type: String,
-//     required: [true, "Please provide your name"],
-//   },
+  password: {
+    type: String,
+    required: [true, "Please provide your password"],
+  },
   location: {
     type: String,
-    required: true,
+    required: false,
   },
   email: {
     type: String,

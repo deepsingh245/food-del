@@ -1,9 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../components/Navbar.jsx'
 import Footer from '../components/Footer.jsx'
 import { Link } from 'react-router-dom'
 
 function SignUp() {
+  const [credentials, setCredentials] = useState({name:'',email:'',password:'',location:''})
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    const response = fetch('http://localhost:3000/api/createuser',{
+      method:'POST',
+      headers:{
+        "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          name:credentials.name,
+          email:credentials.email,
+          password: credentials.password,
+          location: credentials.location
+        })
+    }).then(variable => {
+      console.log(response.json())
+      if(!variable.ok){
+        alert('Bad credentials')
+      }
+  })}
+  const onChange=(e)=>{
+      setCredentials({...credentials,[e.target.name]:e.target.value})
+    }
+  
   return (
     <>
     <Navbar/>
@@ -20,7 +44,7 @@ function SignUp() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6"  onSubmit={handleSubmit}>
           <div className='flex justify-between'>
               <div className='flex flex-col'>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-200">
@@ -28,9 +52,11 @@ function SignUp() {
               </label>
               <div className="mt-2">
                 <input
-                  id="firstname"
-                  name="firstname"
+                  id="name"
+                  name="name"
                   type="text"
+                  value={credentials.name}
+                  onChange={onChange}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -45,7 +71,6 @@ function SignUp() {
                   id="lastname"
                   name="lastname"
                   type="text"
-                  required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -61,6 +86,8 @@ function SignUp() {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  value={credentials.email}
+                  onChange={onChange}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -80,6 +107,26 @@ function SignUp() {
                   name="password"
                   type="password"
                   autoComplete="current-password"
+                  onChange={onChange}
+                  value={credentials.password}
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="location" className="block text-sm font-medium leading-6 text-gray-200">
+                Location
+              </label>
+              <div className="mt-2">
+                <input
+                  id="location"
+                  name="location"
+                  type="text"
+                  autoComplete="location"
+                  value={credentials.location}
+                  onChange={onChange}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />

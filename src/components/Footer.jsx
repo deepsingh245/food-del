@@ -13,19 +13,19 @@ function footer() {
           <div className='flex flex-col items-center text-left'>
             <Footer.Title title="Company" className='mr-10'/>
             <Footer.LinkGroup col>
-              <Footer.Link ><Link to="/about">About</Link></Footer.Link>
-              <Footer.Link ><Link to="#">Career</Link></Footer.Link>
-              <Footer.Link ><Link to="#">Brand Center</Link></Footer.Link>
-              <Footer.Link ><Link to="#">Blog</Link></Footer.Link>
+              <Footer.Link to="/about" >About</Footer.Link>
+              <Footer.Link >Career</Footer.Link>
+              <Footer.Link >Brand Center</Footer.Link>
+              <Footer.Link >Blog</Footer.Link>
             </Footer.LinkGroup>
           </div>
           <div className='flex flex-col items-center text-left'>
             <Footer.Title title="help center" className='mr-7'/>
             <Footer.LinkGroup col>
-              <Footer.Link ><Link to="#">Discord Server</Link></Footer.Link>
-              <Footer.Link ><Link to="#">Twitter</Link></Footer.Link>
-              <Footer.Link ><Link to="#">Facebook</Link></Footer.Link>
-              <Footer.Link ><Link to="#">Contact Us</Link></Footer.Link>
+              <Footer.Link >Discord Server</Footer.Link>
+              <Footer.Link >Twitter</Footer.Link>
+              <Footer.Link >Facebook</Footer.Link>
+              <Footer.Link >Contact Us</Footer.Link>
             </Footer.LinkGroup>
           </div>
           <div className='flex flex-col items-center text-left'>

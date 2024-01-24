@@ -1,8 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../components/Navbar.jsx'
 import Footer from '../components/Footer.jsx'
+import { Link } from 'react-router-dom'
+
 
 function Login() {
+  const [credentials, setCredentials] = useState({email:'',password:''})
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    const response = fetch('http://localhost:3000/api/createuser',{
+      method:'POST',
+      headers:{
+        "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          email:credentials.email,
+          password: credentials.password,
+        })
+    }).then(variable => {
+      console.log(response.json())
+      if(!variable.ok){
+        alert('Bad credentials')
+      }
+  })}
+  const onChange=(e)=>{
+      setCredentials({...credentials,[e.target.name]:e.target.value})
+    }
   return (
     <>
     <Navbar/>
@@ -19,7 +42,7 @@ function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-200">
                 Email address
@@ -29,6 +52,8 @@ function Login() {
                   id="email"
                   name="email"
                   type="email"
+                  value={credentials.email}
+                  onChange={onChange}
                   autoComplete="email"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -52,6 +77,8 @@ function Login() {
                   id="password"
                   name="password"
                   type="password"
+                  value={credentials.password}
+                  onChange={onChange}
                   autoComplete="current-password"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -71,9 +98,9 @@ function Login() {
 
           <p className="mt-10 text-center text-sm text-gray-400">
             Not a member?{' '}
-            <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-              Start a 14 day free trial
-            </a>
+            <Link to="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+              Create a New Account
+            </Link>
           </p>
         </div>
       </div>
