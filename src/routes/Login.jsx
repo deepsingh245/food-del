@@ -2,13 +2,15 @@ import React, { useState } from 'react'
 import Navbar from '../components/Navbar.jsx'
 import Footer from '../components/Footer.jsx'
 import { Link } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
+const navigate = useNavigate();
+
   const [credentials, setCredentials] = useState({email:'',password:''})
   const handleSubmit = async(e)=>{
     e.preventDefault();
-    const response = fetch('http://localhost:3000/api/createuser',{
+    const response = fetch('http://localhost:3000/api/loginuser',{
       method:'POST',
       headers:{
         "Content-Type":"application/json"
@@ -18,11 +20,17 @@ function Login() {
           password: credentials.password,
         })
     }).then(variable => {
-      console.log(response.json())
+      // console.log(variable.json())
       if(!variable.ok){
         alert('Bad credentials')
       }
-  })}
+      else{
+        localStorage.setItem("authToken", variable.token);
+        // console.log(localStorage.getItem("authToken"))
+        navigate("/")
+      }
+  }
+  )}
   const onChange=(e)=>{
       setCredentials({...credentials,[e.target.name]:e.target.value})
     }

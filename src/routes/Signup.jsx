@@ -19,9 +19,12 @@ function SignUp() {
           location: credentials.location
         })
     }).then(variable => {
-      console.log(response.json())
+      console.log(variable.json())
       if(!variable.ok){
         alert('Bad credentials')
+      }
+      else{
+        window.location='/'
       }
   })}
   const onChange=(e)=>{
