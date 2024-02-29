@@ -2,8 +2,8 @@ import { Fragment,props,useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from "react-router-dom";
-import Model from './Model';
-
+import { useCart, useDispatchCart } from '../components/ContextReducer';
+import Cart from '../routes/cart';
 
 
 const navigation = [
@@ -101,8 +101,8 @@ export default function Navbar() {
 
 
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                {(localStorage.getItem("authToken"))?
-                <Link to='/cart'  data-modal-target="default-modal" data-modal-toggle="default-modal" 
+                {(localStorage.getItem("authToken"))?<>
+                <button   target="default-modal" data-modal-toggle="default-modal" 
                 type="button"
                 className="relative flex rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               >
@@ -111,9 +111,16 @@ export default function Navbar() {
 </svg>
 
 
-              </Link>: ''}
+              </button>
+              <div id="default-modal" tabIndex="-1" aria-hidden="true" className="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div className="relative p-4 w-full max-w-2xl max-h-full">
+        {/* <!-- Modal content --> */}
+        <Cart/>
+    </div>
+</div>
+              </>: ''}
               <span className="inline-flex items-center mb-5 ml-5 absolute rounded-xl bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-        2
+        {data.length}
       </span>
                 
 
