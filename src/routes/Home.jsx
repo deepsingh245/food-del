@@ -11,7 +11,7 @@ function Home() {
   const [foodItem, setItem] = useState([]);
 
   const loadData = async () => {
-    let response = await fetch("http://localhost:3000/api/foodData/", {
+    let response = await fetch("https://tapeat-sand.vercel.app//api/foodData/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,6 +36,7 @@ function Home() {
   return (
     <div className="h-full">
       <Navbar />
+      <p>Login to see the de</p>
       <Crousel />
       <section className="w-screen h-16 flex justify-center items-center">
          
